@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "lib": ["ES6"],
+        "rootDir": "./",
+        "baseUrl": "./",
+        "outDir": ".build",
+        "sourceMap": true,
+        "removeComments": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "preserveConstEnums": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "useUnknownInCatchVariables": false,
+        "strict": true,
+        "skipLibCheck": true,
+        "paths": {
+            "@pulsifi/configs": ["src/configs"],
+            "@pulsifi/pkg": ["package.json"],
+            "@pulsifi/interfaces": ["src/lib/interfaces"],
+            "@pulsifi/builders": ["src/lib/builders"],
+            "@pulsifi/utils": ["src/lib/utils"],
+            "@pulsifi/mappers": ["src/lib/mappers"],
+            "@pulsifi/enum": ["src/lib/enum"],
+            "@pulsifi/services": ["src/lib/services"],
+            "@pulsifi/exceptions": ["src/lib/exceptions"],
+            "@pulsifi/eventHandlers": ["src/functions/receiver/eventHandlers"]
+        }
+    },
+    "ts-node": {
+        "files": true
+    }
+}

@@ -1,0 +1,196 @@
+openapi: 3.0.0
+info:
+    title: Resume Upload API
+    description: API for uploading and processing resumes
+    version: 1.0.0
+paths:
+    /document/v1.0/resume_upload:
+        post:
+            summary: Upload a resume
+            requestBody:
+                required: false
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            properties:
+                                file:
+                                    type: string
+                                    format: binary
+                                file_name:
+                                    type: string
+            responses:
+                '200':
+                    description: Resume uploaded successfully
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ResumeUploadResponse'
+                '400':
+                    description: Bad request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+
+            parameters:
+                - name: idempotence-key
+                  in: header
+                  required: true
+                  description: An idempotence key to ensure idempotent requests
+                  schema:
+                      type: string
+components:
+    schemas:
+        ResumeUploadResponse:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: The ID of the uploaded resume
+                file_name:
+                    type: string
+                    description: The name of the uploaded file
+                file_path:
+                    type: string
+                    description: The path to the uploaded file
+                status_meta:
+                    $ref: '#/components/schemas/ResumeUploadStatusMeta'
+                resume:
+                    $ref: '#/components/schemas/ResumeData'
+        ResumeUploadStatusMeta:
+            type: object
+            properties:
+                file_scan_status:
+                    type: string
+                    enum:
+                        - 'failed'
+                        - 'not_ready'
+                        - 'success'
+                    description: The status of the file scan
+                file_scan_failed_reason:
+                    $ref: '#/components/schemas/FileScanErrorCode'
+                    description: The reason for file scan failure (if applicable)
+                daxtra_status:
+                    type: string
+                    enum:
+                        - 'failed'
+                        - 'not_ready'
+                        - 'success'
+                    description: The status of the Daxtra parsing
+                daxtra_failed_reason:
+                    $ref: '#/components/schemas/DaxtraErrorCode'
+                    description: The reason for Daxtra parsing failure (if applicable)
+        ResumeData:
+            type: object
+            properties:
+                content_path:
+                    type: string
+                    description: The path to the resume content
+                parsed_content:
+                    $ref: '#/components/schemas/ResumeParsedContent'
+        ResumeParsedContent:
+            type: object
+            properties:
+                profile:
+                    $ref: '#/components/schemas/ResumeProfile'
+                careers:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ResumeWorkExperience'
+                skills:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ResumeSkills'
+        ResumeProfile:
+            type: object
+            properties:
+                first_name:
+                    type: string
+                    description: The first name of the person in the resume
+                    nullable: true
+                last_name:
+                    type: string
+                    description: The last name of the person in the resume
+                    nullable: true
+                phone_number:
+                    type: string
+                    description: The phone number of the person in the resume
+                    nullable: true
+                phone_code:
+                    type: string
+                    description: The phone code of the person in the resume
+                    nullable: true
+                email:
+                    type: string
+                    description: The email address of the person in the resume
+                    nullable: true
+                nationality:
+                    type: string
+                    description: The nationality of the person in the resume
+                    nullable: true
+                professional_summary:
+                    type: string
+                    description: A professional summary from the resume
+        ResumeWorkExperience:
+            type: object
+            properties:
+                role:
+                    type: string
+                    description: The role or job title in the work experience
+                    nullable: true
+                organization:
+                    type: string
+                    description: The organization where the work experience took place
+                    nullable: true
+                country_code:
+                    type: string
+                    description: The country code of the work experience
+                    nullable: true
+                description:
+                    type: string
+                    description: A description of the work experience
+                    nullable: true
+                months_of_work:
+                    type: number
+                    description: The duration of work in months
+                    nullable: true
+                start_date:
+                    type: string
+                    description: The start date of the work experience
+                    nullable: true
+                end_date:
+                    type: string
+                    description: The end date of the work experience
+                    nullable: true
+                is_current:
+                    type: boolean
+                    description: Whether the work experience is current
+                    nullable: true
+        ResumeSkills:
+            type: object
+            properties:
+                name:
+                    type: string
+                    description: The name of a skill
+                proficiency:
+                    type: string
+                    description: The proficiency level of the skill
+                    nullable: true
+        DaxtraErrorCode:
+            type: string
+            enum:
+                - 'daxtra_timed_out'
+                - 'daxtra_failed_to_parse_resume'
+            description: Error codes for Daxtra parsing
+        FileScanErrorCode:
+            type: string
+            enum:
+                - 'malicious'
+            description: Error codes for file scanning
+        Error:
+            type: object
+            properties:
+                message:
+                    type: string
+                    description: A brief error message

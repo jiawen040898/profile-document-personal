@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sanitizeByteString removes null bytes from input string 1`] = `
+"● I have 10 years of experience in personal finance management, and I have assisted 45 repeat clients in increasing their capital by an average of 15% every year.
+● I have 10 years of experience in personal finance management, and I have assisted 45 repeat clients in increasing their capital by an average of 15% every year.
+"
+`;

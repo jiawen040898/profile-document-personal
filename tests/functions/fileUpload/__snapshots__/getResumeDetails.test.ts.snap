@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getResumeDetails should able to run without error 1`] = `
+{
+  "careers": [
+    {
+      "country_code": null,
+      "description": "*    Develop new features based on requirement (full-stack)
+    *    Fix urgent bugs in the system.
+    *    Breaking down big tasks and assigning them to new recruits.
+    *    Participated in maintenance of the system that handles 10,000,000+ API calls per day.
+    *    Wrote a report generator that analyzes and summarizes 25,000,000 mongo documents within a minute. Some parts of its functions are also being reused for other purposes later by colleagues, which massively shortens their development process.
+    *    Creating a project to scrape data from third party websites through Python and Scrapy, automate them with UI for setting and data presentation.
+    *    Designing and adjusting databases based on requirement and performance issues.
+    *    Use selenium to mimic user behavior for testing.
+    *    Using Pyautogui to automate tasks for the company.
+    *    Keep exploring new ways to achieve the company needs.",
+      "end_date": null,
+      "is_current": true,
+      "months_of_work": 45,
+      "organization": "Johor",
+      "role": "Javascript Developer",
+      "start_date": "2017-05",
+    },
+    {
+      "country_code": null,
+      "description": "*    Add Js and PHP on top of Wordpress to customize pages.
+    *    Add modules on top of the current Laravel system in the company to fulfill company needs.
+    *    Adjust the way Laravel handles upload so that it will add watermark and compress image size on PDF, GIF, PNG, BMP and JPG.
+
+Freelancing, Remote - JS & PHP Developer",
+      "end_date": "2017-04",
+      "is_current": false,
+      "months_of_work": 2,
+      "organization": "K.L.",
+      "role": "Junior Software Developer",
+      "start_date": "2017-03",
+    },
+    {
+      "country_code": null,
+      "description": "*    Wrote a set of Javascript image handlers that do cropping, resizing and rotation of image.
+    *    Built a PHP backend API for a mobile app for gym to allow all their customers to check-in through QR codes for virtual currencies which can exchange for physical rewards.
+    *    Single handedly built a PHP backend API for a Jewellery Reseller to track their stocks flow, and transaction records. Actions of all users are tracked for the security purposes.",
+      "end_date": "2016-10",
+      "is_current": false,
+      "months_of_work": 16,
+      "organization": null,
+      "role": null,
+      "start_date": "2015-07",
+    },
+  ],
+  "profile": {
+    "email": "huatzhi@gmail.com",
+    "first_name": "Lor",
+    "last_name": "Zhi",
+    "nationality": null,
+    "phone_code": "60",
+    "phone_number": "1110898231",
+    "professional_summary": null,
+  },
+  "skills": [
+    {
+      "name": "Chinese",
+      "proficiency": null,
+      "source": "daxtra",
+    },
+    {
+      "name": "English",
+      "proficiency": null,
+      "source": "daxtra",
+    },
+  ],
+}
+`;
