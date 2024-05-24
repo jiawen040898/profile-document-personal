@@ -7,16 +7,31 @@
     "private": true,
     "scripts": {
         "prepare": "is-ci || husky install",
-        "build": "echo not required",
+        "build": "yarn install --frozen-lockfile --prefer-offline && yarn install --frozen-lockfile --prefer-offline --cwd layer/nodejs",
         "deploy": "serverless deploy -v",
         "remove": "serverless remove -v",
         "log-upload": "serverless logs -t -f upload",
         "format": "pretty-quick --staged && prettier --loglevel \"warn\" --debug-check \"src/**/*.ts\" \"tests/**/*.ts\"",
         "lint": "yarn format && eslint \"{src,tests}/**/*.ts\" --fix",
         "test": "jest --watch",
-        "test:ci": "jest --ci --coverage"
+        "test:ci": "jest --ci --coverage",
+        "cdk": "cdk",
+        "biome:format": "biome format --write ./cdk",
+        "biome:lint": "biome lint ./cdk",
+        "biome:check": "biome check --apply ./cdk"
     },
-    "dependencies": {
+    "devDependencies": {
+        "@actions/core": "1.10.1",
+        "constructs": "10.3.0",
+        "aws-cdk": "2.141.0",
+        "aws-cdk-lib": "2.141.0",
+        "@pulsifi/custom-aws-cdk-lib": "1.14.11",
+        "@biomejs/biome": "1.7.3",
+        "@mrgrain/cdk-esbuild": "5.1.0",
+        "esbuild-node-externals": "1.13.1",
+        "esbuild-plugin-copy": "2.1.1",
+        "esbuild-plugin-time": "1.0.0",
+        "esbuild-plugin-typescript-decorators": "0.1.0",
         "@middy/http-cors": "4.6.5",
         "@middy/http-error-handler": "4.6.5",
         "@middy/http-event-normalizer": "4.6.5",
@@ -32,9 +47,7 @@
         "jsonwebtoken": "9.0.2",
         "libphonenumber-js": "1.10.48",
         "sanitize-filename": "1.6.3",
-        "unleash-client": "5.3.0"
-    },
-    "devDependencies": {
+        "unleash-client": "5.3.0",
         "@aws-sdk/client-s3": "3.430.0",
         "@aws-sdk/client-sns": "3.430.0",
         "@aws-sdk/client-sqs": "3.430.0",

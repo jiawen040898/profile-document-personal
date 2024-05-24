@@ -35,5 +35,6 @@
     },
     "ts-node": {
         "files": true
-    }
+    },
+    "exclude": ["./cdk/**", "cdk.out", "node_modules", "biome.json"]
 }

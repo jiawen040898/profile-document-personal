@@ -1,0 +1,20 @@
+{
+    "dependencies": {
+        "@middy/http-cors": "4.6.5",
+        "@middy/http-error-handler": "4.6.5",
+        "@middy/http-event-normalizer": "4.6.5",
+        "@middy/http-header-normalizer": "4.6.5",
+        "@middy/http-json-body-parser": "4.6.5",
+        "@middy/http-multipart-body-parser": "4.6.5",
+        "@middy/s3-key-normalizer": "2.5.7",
+        "@middy/warmup": "4.6.5",
+        "@pulsifi/fn": "1.14.0",
+        "@sentry/serverless": "7.74.1",
+        "form-data": "4.0.0",
+        "http-error-handler": "0.3.1",
+        "jsonwebtoken": "9.0.2",
+        "libphonenumber-js": "1.10.48",
+        "sanitize-filename": "1.6.3",
+        "unleash-client": "5.3.0"
+    }
+}

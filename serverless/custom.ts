@@ -17,6 +17,7 @@ export const custom: Custom = {
             'pulsifi-${opt:stage}-${opt:region}-layers-deployment-bucket-1',
         compatibleRuntimes: [nodejsVersion],
         retainVersions: 5,
+        dependenciesPath: './layer/nodejs/package.json',
     },
     prune: {
         automatic: true,
